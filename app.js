@@ -10,25 +10,25 @@ const Review = require("./models/review.js")
 // const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 
-const MONGO_URL = process.env.MONGO_URI || "mongodb+srv://<pratikmakvana16>:<Makvana@16>@cluster0.yq49q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+// const MONGO_URL = process.env.MONGO_URI || "mongodb+srv://<pratikmakvana16>:<Makvana@16>@cluster0.yq49q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
-mongoose.connect(MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 30000,  // Increases timeout to avoid issues
-})
-.then(() => console.log("Connected to MongoDB Atlas"))
-.catch((err) => console.log("MongoDB Connection Error:", err));
+// mongoose.connect(MONGO_URL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     serverSelectionTimeoutMS: 30000,  // Increases timeout to avoid issues
+// })
+// .then(() => console.log("Connected to MongoDB Atlas"))
+// .catch((err) => console.log("MongoDB Connection Error:", err));
 
-main()
-    .then(() => { 
-        console.log("Connected to MongoDB");    
-    })
-    .catch((err) => {
-        console.log("MongoDB Connection Error:", err);
-    });
+// main()
+//     .then(() => { 
+//         console.log("Connected to MongoDB");    
+//     })
+//     .catch((err) => {
+//         console.log("MongoDB Connection Error:", err);
+//     });
 
-mongoose.set('debug', true);
+// mongoose.set('debug', true);
 
 async function main() {
     await mongoose.connect(MONGO_URL);
