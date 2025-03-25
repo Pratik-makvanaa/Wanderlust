@@ -30,9 +30,9 @@ const Review = require("./models/review.js")
 
 // mongoose.set('debug', true);
 
-async function main() {
-    await mongoose.connect(MONGO_URL);
-}
+// async function main() {
+//     await mongoose.connect(MONGO_URL);
+// }
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -94,20 +94,20 @@ app.delete("/listings/:id",async (req,res) => {
 
 //Reviews
 //POST Route
-app.post("/listigs/:id/reviews", async (req,res) => {
-    let listing = await Listing.findById(req.params.id)
-    let newReview = new Review(req.body.review)
-    listing.reviews.push(newReview)
-    await newReview.save();
-    await listing.save()
+// app.post("/listigs/:id/reviews", async (req,res) => {
+//     let listing = await Listing.findById(req.params.id)
+//     let newReview = new Review(req.body.review)
+//     listing.reviews.push(newReview)
+//     await newReview.save();
+//     await listing.save()
 
-    console.log("new review saved"); 
-    res.send("new review saved")
-})
+//     console.log("new review saved"); 
+//     res.send("new review saved")
+// })
 
-app.get('/listings', (req, res) => {
-    res.render('listings', { sampleListings });
-});
+// app.get('/listings', (req, res) => {
+//     res.render('listings', { sampleListings });
+// });
 
 
 // Test route to insert a sample listing
