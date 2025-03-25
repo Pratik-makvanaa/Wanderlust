@@ -1,0 +1,136 @@
+body{
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.navbar-brand{
+    display: flex;
+    top: 20px;
+    left: 80px;
+}
+
+.navbar-nav{
+    position: absolute;
+    top: 20px;
+    left: 100px;
+}
+
+.container{
+    flex: 1;
+}
+.navbar {
+    height: 5rem;
+}
+.fa-compass{
+    color: rgb(255, 89, 0);
+    font-size: 2rem;
+}
+.nav-link {
+    color: #222 !important;
+} 
+.f-info-links a {
+    text-decoration: none;
+    color: #222;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+    font-size: large;
+}
+.f-info-links, .f-info-socials{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.f-info-des{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1
+}
+
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.f-info {
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+/*cards */
+.card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+.card-img-top{
+    padding: 0.5rem !important;
+    border-radius: 2rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+.card-body{
+    padding: 0 !important;
+}
+.card-text{
+    font-weight: 400;
+    
+}
+.listing-link{
+    text-decoration: none;
+}
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+
+/* new page */
+/* .btn{
+    background-color: rgb(255, 89, 0) !important;
+} */
+.add-btn{
+    background-color: red !important;
+    border: none !important;
+}
+
+
+/* view page */
+.card-text{
+    font-size: 1.5rem;
+}
+
+.navbar-nav a:hover{
+    text-decoration: underline;
+}
+.edit-btn{
+    background-color: red !important;
+    border: none !important;
+}
+
+
+/* show page */
+.show-img{
+    height: 50vh;
+}
+.btns{
+    display: flex;
+}
+.show-card{
+    display: flex;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Edit page */
