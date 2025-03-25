@@ -1,50 +1,49 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const Listing = require("./models/listing.js"); // Correct import
-const path = require("path")
-const methodOverride = require("method-override")
+const Listing = require("./models/listing.js");
+const path = require("path");
+const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
-const Review = require("./models/review.js")
+const Review = require("./models/review.js");
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const MONGO_URL = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/wanderlust";
+const PORT = process.env.PORT || 8080;
 
-
-// const MONGO_URL = process.env.MONGO_URI || "mongodb+srv://<pratikmakvana16>:<Makvana@16>@cluster0.yq49q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
-// mongoose.connect(MONGO_URL, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     serverSelectionTimeoutMS: 30000,  // Increases timeout to avoid issues
-// })
-// .then(() => console.log("Connected to MongoDB Atlas"))
-// .catch((err) => console.log("MongoDB Connection Error:", err));
-
-// main()
-//     .then(() => { 
-//         console.log("Connected to MongoDB");    
-//     })
-//     .catch((err) => {
-//         console.log("MongoDB Connection Error:", err);
-//     });
-
-// mongoose.set('debug', true);
-
-// async function main() {
-//     await mongoose.connect(MONGO_URL);
-// }
+async function connectWithRetry() {
+    let retries = 5;
+    while (retries > 0) {
+        try {
+            await mongoose.connect(MONGO_URL, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+                serverSelectionTimeoutMS: 30000,
+            });
+            console.log("Connected to MongoDB");
+            return;
+        } catch (err) {
+            retries -= 1;
+            console.log(`MongoDB Connection Error: ${err}. Retries left: ${retries}`);
+            if (retries === 0) {
+                console.log("Exhausted retries. Exiting...");
+                process.exit(1);
+            }
+            await new Promise(resolve => setTimeout(resolve, 5000));
+        }
+    }
+}
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.use(express.urlencoded({extended: true}));
-app.use(methodOverride("_method"))
-app.engine('ejs', ejsMate)
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
+app.engine("ejs", ejsMate);
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
     res.redirect("/listings");
 });
-
 //index route
 app.get("/listings", async (req,res) => {
     const allListings = await Listing.find({});
