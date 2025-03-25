@@ -1,4 +1,3 @@
-require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -8,31 +7,27 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const Review = require("./models/review.js");
 
+require("dotenv").config();
+
 const MONGO_URL = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/wanderlust";
 const PORT = process.env.PORT || 8080;
 
-async function connectWithRetry() {
-    let retries = 5;
-    while (retries > 0) {
-        try {
-            await mongoose.connect(MONGO_URL, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-                serverSelectionTimeoutMS: 30000,
-            });
-            console.log("Connected to MongoDB");
-            return;
-        } catch (err) {
-            retries -= 1;
-            console.log(`MongoDB Connection Error: ${err}. Retries left: ${retries}`);
-            if (retries === 0) {
-                console.log("Exhausted retries. Exiting...");
-                process.exit(1);
-            }
-            await new Promise(resolve => setTimeout(resolve, 5000));
-        }
+async function main() {
+    try {
+        await mongoose.connect(MONGO_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            serverSelectionTimeoutMS: 30000, // 30s timeout
+            bufferCommands: false, // Disable buffering
+        });
+        console.log("Connected to MongoDB");
+    } catch (err) {
+        console.log("MongoDB Connection Error:", err);
+        process.exit(1);
     }
 }
+
+main();
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -44,6 +39,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/", (req, res) => {
     res.redirect("/listings");
 });
+
+
 //index route
 app.get("/listings", async (req,res) => {
     const allListings = await Listing.find({});
@@ -91,6 +88,10 @@ app.delete("/listings/:id",async (req,res) => {
     res.redirect("/listings")
 })
 
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
+
 //Reviews
 //POST Route
 // app.post("/listigs/:id/reviews", async (req,res) => {
@@ -129,6 +130,3 @@ app.delete("/listings/:id",async (req,res) => {
 // });
 
 // Start the server
-app.listen(8080, () => {
-    console.log("Server running on http://localhost:8080");
-});
