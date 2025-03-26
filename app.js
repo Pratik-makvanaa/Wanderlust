@@ -19,7 +19,7 @@ async function main() {
             // useNewUrlParser: true,
             // useUnifiedTopology: true,
             // serverSelectionTimeoutMS: 30000, // 30s timeout
-            bufferCommands: false, // Disable buffering
+            // bufferCommands: false, // Disable buffering
         });
         console.log("Connected to MongoDB");
     } catch (err) {
