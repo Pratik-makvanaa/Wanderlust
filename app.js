@@ -88,8 +88,14 @@ app.delete("/listings/:id",async (req,res) => {
     res.redirect("/listings")
 })
 
+
+app.get('/listings', (req, res) => {
+    res.render('listings', { sampleListings });
+});
+
+
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on 8080`);
 });
 
 //Reviews
@@ -104,10 +110,6 @@ app.listen(PORT, () => {
 //     console.log("new review saved"); 
 //     res.send("new review saved")
 // })
-
-// app.get('/listings', (req, res) => {
-//     res.render('listings', { sampleListings });
-// });
 
 
 // Test route to insert a sample listing
