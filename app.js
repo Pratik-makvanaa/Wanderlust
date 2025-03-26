@@ -125,18 +125,12 @@ app.delete("/listings/:id", async (req, res) => {
     }
 });
 
-// Start the server
-// const server = app.listen(PORT || 10000, "0.0.0.0", () => {
-//     console.log(`🚀 Server running on port ${PORT || 10000}`);
-// });
-
-// server.keepAliveTimeout = 120000; // 120 seconds
-// server.headersTimeout = 120000; // 120 seconds
-
- // Use Render-assigned port
-app.listen(PORT, "0.0.0.0", () => {
+Start the server
+const server =app.listen(PORT, "0.0.0.0", () => {
     console.log(`🚀 Server running on port ${PORT}`);
 });
+server.keepAliveTimeout = 120000; // 120 seconds
+server.headersTimeout = 120000; // 120 seconds
 
 
 //Reviews
