@@ -15,9 +15,9 @@ const PORT = process.env.PORT || 8080;
 async function main() {
     try {
         await mongoose.connect(MONGO_URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            serverSelectionTimeoutMS: 30000, // 30s timeout
+            // useNewUrlParser: true,
+            // useUnifiedTopology: true,
+            // serverSelectionTimeoutMS: 30000, // 30s timeout
             bufferCommands: false, // Disable buffering
         });
         console.log("Connected to MongoDB");
