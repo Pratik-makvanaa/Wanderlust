@@ -95,7 +95,7 @@ app.get('/listings', (req, res) => {
 });
 
 
-app.listen(PORT, () => {
+app.listen(8080, () => {
     console.log(`Server running on 8080`);
 });
 
