@@ -18,8 +18,8 @@ async function main() {
         await mongoose.connect(dbUrl, {
             // useNewUrlParser: true,
             // useUnifiedTopology: true,
-            // serverSelectionTimeoutMS: 30000, // 30s timeout
-            // bufferCommands: false, // Disable buffering
+            serverSelectionTimeoutMS: 30000, // 30s timeout
+            bufferCommands: false, // Disable buffering
         });
         console.log("Connected to MongoDB");
     } catch (err) {
