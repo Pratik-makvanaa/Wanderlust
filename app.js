@@ -125,7 +125,7 @@ app.delete("/listings/:id", async (req, res) => {
     }
 });
 
-Start the server
+// Start the server
 const server =app.listen(PORT, "0.0.0.0", () => {
     console.log(`🚀 Server running on port ${PORT}`);
 });
