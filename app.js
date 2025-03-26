@@ -1,4 +1,4 @@
-const express = require("express");
+vconst express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
@@ -10,8 +10,8 @@ const Review = require("./models/review.js");
 require("dotenv").config();
 
 // const MONGO_URL = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/wanderlust";
-const PORT = process.env.PORT || 8080;
-const dbUrl = process.ATLASDB_URL
+const PORT = process.env.PORT 
+const dbUrl = process.env.ATLASDB_URL
 
 async function main() {
     try {
