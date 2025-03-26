@@ -7,14 +7,15 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const Review = require("./models/review.js");
 
-require("dotenv").config();
+// require("dotenv").config();
 
-const MONGO_URL = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/wanderlust";
-const PORT = process.env.PORT || 8080;
+// const MONGO_URL = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/wanderlust";
+// const PORT = process.env.PORT || 8080;
+const dbUrl = process.ATLASDB_URL
 
 async function main() {
     try {
-        await mongoose.connect(MONGO_URL, {
+        await mongoose.connect(dbUrl, {
             // useNewUrlParser: true,
             // useUnifiedTopology: true,
             // serverSelectionTimeoutMS: 30000, // 30s timeout
