@@ -9,26 +9,23 @@ const Review = require("./models/review.js");
 
 require("dotenv").config();
 
-// const MONGO_URL = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/wanderlust";
-const PORT = process.env.PORT 
-const dbUrl = process.env.ATLASDB_URL
+const PORT = process.env.PORT || 8080;  // Use default 8080 if PORT is undefined
+const dbUrl = process.env.ATLASDB_URL;
 
-async function main() {
+async function connectDB() {
     try {
         await mongoose.connect(dbUrl, {
-            // useNewUrlParser: true,
-            // useUnifiedTopology: true,
             serverSelectionTimeoutMS: 30000, // 30s timeout
             bufferCommands: false, // Disable buffering
         });
-        console.log("Connected to MongoDB");
+        console.log("✅ Connected to MongoDB");
     } catch (err) {
-        console.log("MongoDB Connection Error:", err);
-        process.exit(1);
+        console.error("❌ MongoDB Connection Error:", err);
+        process.exit(1); // Stop the app if DB connection fails
     }
 }
 
-main();
+connectDB();
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -41,63 +38,97 @@ app.get("/", (req, res) => {
     res.redirect("/listings");
 });
 
-
-//index route
-app.get("/listings", async (req,res) => {
-    const allListings = await Listing.find({});
-    res.render("listings/index.ejs", {allListings})
-})
-
-//new route
-app.get("/listings/new", (req,res) => {
-    res.render("listings/new.ejs")
-})
-
-//show route
-app.get("/listings/:id", async (req,res) => {
-    let {id} = req.params;
-    const listing = await Listing.findById(id);
-    res.render("listings/show.ejs", {listing})
-})
-
-//create Route
-app.post("/listings", async (req,res) => {
-    const newListings = new Listing(req.body.listing)
-    await newListings.save()
-    res.redirect("/listings")
-})
-
-//Edit route
-app.get("/listings/:id/edit", async (req,res) => {
-    let { id} = req.params;
-    const listing = await Listing.findById(id);
-    res.render("listings/edit.ejs", {listing})
-})
-
-//update route
-app.put("/listings/:id", async (req,res) => {
-    let {id} = req.params;
-    await Listing.findByIdAndUpdate(id, { ...req.body.listing})
-    res.redirect("/listings")
-})
-
-//delete
-app.delete("/listings/:id",async (req,res) => {
-    let {id} = req.params
-    let deletedListing = await Listing.findByIdAndDelete(id);
-    console.log(deletedListing)
-    res.redirect("/listings")
-})
-
-
-app.get('/listings', (req, res) => {
-    res.render('listings', { sampleListings });
+// Ensure database connection before fetching listings
+app.get("/listings", async (req, res) => {
+    try {
+        await mongoose.connection.asPromise();  // Ensure DB is connected
+        const allListings = await Listing.find({});
+        res.render("listings/index.ejs", { allListings });
+    } catch (err) {
+        console.error("Error fetching listings:", err);
+        res.status(500).send("Internal Server Error");
+    }
 });
 
+// New listing form
+app.get("/listings/new", (req, res) => {
+    res.render("listings/new.ejs");
+});
 
+// Show a specific listing
+app.get("/listings/:id", async (req, res) => {
+    try {
+        await mongoose.connection.asPromise();
+        let { id } = req.params;
+        const listing = await Listing.findById(id);
+        if (!listing) return res.status(404).send("Listing not found");
+        res.render("listings/show.ejs", { listing });
+    } catch (err) {
+        console.error("Error fetching listing:", err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+// Create a new listing
+app.post("/listings", async (req, res) => {
+    try {
+        await mongoose.connection.asPromise();
+        const newListing = new Listing(req.body.listing);
+        await newListing.save();
+        res.redirect("/listings");
+    } catch (err) {
+        console.error("Error creating listing:", err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+// Edit listing form
+app.get("/listings/:id/edit", async (req, res) => {
+    try {
+        await mongoose.connection.asPromise();
+        let { id } = req.params;
+        const listing = await Listing.findById(id);
+        if (!listing) return res.status(404).send("Listing not found");
+        res.render("listings/edit.ejs", { listing });
+    } catch (err) {
+        console.error("Error fetching listing for edit:", err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+// Update a listing
+app.put("/listings/:id", async (req, res) => {
+    try {
+        await mongoose.connection.asPromise();
+        let { id } = req.params;
+        await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+        res.redirect("/listings");
+    } catch (err) {
+        console.error("Error updating listing:", err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+// Delete a listing
+app.delete("/listings/:id", async (req, res) => {
+    try {
+        await mongoose.connection.asPromise();
+        let { id } = req.params;
+        let deletedListing = await Listing.findByIdAndDelete(id);
+        if (!deletedListing) return res.status(404).send("Listing not found");
+        console.log("Deleted:", deletedListing);
+        res.redirect("/listings");
+    } catch (err) {
+        console.error("Error deleting listing:", err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+// Start the server
 app.listen(PORT, () => {
-    console.log(`Server running on 8080`);
+    console.log(`🚀 Server running on port ${PORT}`);
 });
+
 
 //Reviews
 //POST Route
