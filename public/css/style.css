@@ -3,18 +3,13 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
+} 
+/* 
 .navbar-brand{
     display: flex;
     top: 20px;
-    left: 80px;
-}
-
-.navbar-nav{
-    position: absolute;
-    top: 20px;
-    left: 100px;
-}
+    left: 60px;
+ } */
 
 .container{
     flex: 1;
@@ -25,14 +20,16 @@ body{
 .fa-compass{
     color: rgb(255, 89, 0);
     font-size: 2rem;
+
 }
+
 .nav-link {
     color: #222 !important;
 } 
 .f-info-links a {
     text-decoration: none;
     color: #222;
-}
+}   
 .f-info-links a:hover{
     text-decoration: underline;
     font-size: large;
@@ -68,7 +65,7 @@ body{
 }
 
 /*cards */
-.card{
+.listing-card{
     border: none !important;
     margin-bottom: 2rem;
 }
@@ -134,3 +131,41 @@ body{
 }
 
 /* Edit page */
+
+
+/* Footer */
+footer {
+    background: #4b5e71;
+    color: white;
+    padding: 3rem 10%;
+    text-align: center;
+}
+
+.social-links {
+    margin-bottom: 1.5rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1rem;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #3498db;
+}
+        
+.footer-bg {
+    position: relative;
+    overflow: hidden;
+}
+
+footer.sticky-footer {
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+.footer-contact{
+    margin-left: 50rem;
+}
