@@ -3,6 +3,7 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: rgb(150, 159, 167);
 } 
 /* 
 .navbar-brand{
@@ -17,22 +18,35 @@ body{
 .navbar {
     height: 5rem;
 }
-.fa-compass{
-    color: rgb(255, 89, 0);
+.fa-slack{
+    color: #8ec5fc(255, 89, 0) !important ;
     font-size: 2rem;
 
 }
-
+/* .navbar-nav a{
+    border: 2px solid black;
+    margin-left: 5px;
+    border-radius: 10px;
+}
+.navbar-nav a:hover{
+    text-decoration: none;
+    margin-left: 5px;
+    background-color: #8ec5fc;
+    color: white;
+} */
 .nav-link {
     color: #222 !important;
+    border: 1px solid black;
 } 
 .f-info-links a {
     text-decoration: none;
     color: #222;
+    margin-left: 20px;
+
 }   
 .f-info-links a:hover{
     text-decoration: underline;
-    font-size: large;
+    color: black;
 }
 .f-info-links, .f-info-socials{
     width: 100%;
@@ -40,6 +54,9 @@ body{
     align-items: center;
     justify-content: center;
     width: 100%;
+}
+.f-info-socials a:hover{
+    color: black;
 }
 .f-info-des{
     width: 100%;
@@ -52,6 +69,7 @@ body{
 .f-info-socials i{
     font-size: 1.2rem;
     margin-right: 1rem;
+    margin-left: 10px;
 }
 
 .f-info {
@@ -98,7 +116,7 @@ body{
     background-color: rgb(255, 89, 0) !important;
 } */
 .add-btn{
-    background-color: red !important;
+    background-color: #8ec5fc !important;
     border: none !important;
 }
 
@@ -112,7 +130,7 @@ body{
     text-decoration: underline;
 }
 .edit-btn{
-    background-color: red !important;
+    background-color:#677583!important;
     border: none !important;
 }
 
@@ -135,10 +153,13 @@ body{
 
 /* Footer */
 footer {
-    background: #4b5e71;
+    background: #677583;
     color: white;
-    padding: 3rem 10%;
+    padding: 2rem 2%;
     text-align: center;
+}
+.hello{
+    color: black;
 }
 
 .social-links {
@@ -146,7 +167,7 @@ footer {
 }
 
 .social-links a {
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 1rem;
     margin: 0 1rem;
     transition: color 0.3s ease;

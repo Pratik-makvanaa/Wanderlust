@@ -1,57 +1,88 @@
 <style>
     .btn-search {
-        background-color: rgb(255, 89, 0);
+        background-color: rgb(0, 191, 255);
         color: #fff;
         border-radius: 25px;
-        padding: 0.2rem 1rem 0.2rem 1rem;
+        padding: 0.2rem 1rem;
+        white-space: nowrap;
     }
-    .search-in{
-        border-radius: 25px;
-        padding: 0.2rem 2rem 0.2rem 2rem;
-    }
-    .btn-search:hover{
-        background-color: rgb(255, 89, 0);
+
+    .btn-search:hover {
+        background-color: rgb(101, 182, 205);
         color: #fff;
     }
+
     .btn-search i {
         display: inline;
         margin-right: 0.5rem;
     }
+
+    .search-in {
+        border-radius: 25px;
+        padding: 0.2rem 2rem;
+        min-width: 200px;
+    }
+
+    @media (max-width: 768px) {
+        .search-in {
+            padding: 0.4rem 1rem;
+            width: 100%;
+        }
+
+        .btn-search {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .navbar .d-flex {
+            flex-direction: column;
+            align-items: stretch;
+            background-color: rgb(170, 169, 167);
+        }
+    }
 </style>
 
-
-<nav class="navbar navbar-expand-md navbar-light bg-body-tertiary sticky-top border-bottom">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-light bg-body-tertiary border-bottom">
     <div class="container">
-        <a class="navbar-brand " href="#"><i class="fa-solid fa-compass"></i></a>
+        <!-- <a class="navbar-brand" href="#"><i class="fa-solid fa-compass"></i></a> -->
+        <a class="navbar-brand" href="#"><i class="fa-brands fa-slack"></i></a>
         <!-- Toggle Button for Mobile -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <!-- Navbar Links -->
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ">
+            <div class="navbar-nav">
                 <a class="nav-link" href="/listings">Home</a>
             </div>
-            <div class="navbar-nav ms-auto">
-                <form class="d-flex" role="search" >
-                    <!-- method="GET" action="/search"> -->
-                    <input class="form-control me-2 search-in" 
-                    type="search" name="query" placeholder="Search Destination" 
-                    aria-label="Search">
-                    <button class="btn btn-search" type="submit">
-                        <i class="fa-solid fa-magnifying-glass"></i>Search</button>
-                </form>
-            </div>
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="/listings/new">Add New</a>
-                <% if(!currUser) { %>
-                    <a class="nav-link" href="/signup"><b>Sign Up</b></a>
-                    <a class="nav-link" href="/login"><b>Log in </b></a>
-                <% } %>
-                <% if(currUser) { %>
+
+            <div class="ms-auto d-flex flex-column flex-md-row align-items-md-center gap-2">
+                <!-- Search Form 
+                <form class="d-flex flex-column flex-md-row align-items-md-center" role="search">
+                    <input class="form-control me-md-2 search-in" type="search" name="query"
+                        placeholder="Search Destination" aria-label="Search">
+                    <button class="btn btn-search mt-2 mt-md-0" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>Search
+                    </button>
+                </form> -->
+                <!-- <div class="align-items-center">
+                    <h3>Wanderlust</h3>
+                </div> -->
+
+                <!-- Auth Links -->
+                <div class="navbar-nav ms-md-3 mt-2 mt-md-0">
+                    <a class="nav-link" href="/listings/new">Add New</a>
+                    <% if(!currUser) { %>
+                        <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+                        <a class="nav-link" href="/login"><b>Log in </b></a>
+                    <% } %>
+                    <% if(currUser) { %>
                         <a class="nav-link" href="/logout"><b>Log Out</b></a>
-                <% } %>
+                    <% } %>
+                </div>
             </div>
         </div>
     </div>
