@@ -1,0 +1,193 @@
+body{
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgb(150, 159, 167);
+} 
+/* 
+.navbar-brand{
+    display: flex;
+    top: 20px;
+    left: 60px;
+ } */
+
+.container{
+    flex: 1;
+}
+.navbar {
+    height: 5rem;
+}
+.fa-slack{
+    color: #8ec5fc(255, 89, 0) !important ;
+    font-size: 2rem;
+
+}
+/* .navbar-nav a{
+    border: 2px solid black;
+    margin-left: 5px;
+    border-radius: 10px;
+}
+.navbar-nav a:hover{
+    text-decoration: none;
+    margin-left: 5px;
+    background-color: #8ec5fc;
+    color: white;
+} */
+.nav-link {
+    color: #222 !important;
+    border: 1px solid black;
+} 
+/* .f-info-links a {
+    text-decoration: none;
+    color: #222;
+    margin-left: 20px;
+
+}   
+.f-info-links a:hover{
+    text-decoration: underline;
+    color: black;
+ } */
+
+.f-info-links, .f-info-socials{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.f-info-socials a:hover{
+    color: black;
+}
+.f-info-des{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1
+}
+
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    margin-left: 10px;
+}
+
+.f-info {
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+/*cards */
+.listing-card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+.card-img-top{
+    padding: 0.5rem !important;
+    border-radius: 2rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+.card-body{
+    padding: 0 !important;
+}
+.card-text{
+    font-weight: 400;
+    
+}
+.listing-link{
+    text-decoration: none;
+}
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+
+/* new page */
+/* .btn{
+    background-color: rgb(255, 89, 0) !important;
+} */
+.add-btn{
+    background-color: #8ec5fc !important;
+    border: none !important;
+}
+
+
+/* view page */
+.card-text{
+    font-size: 1.5rem;
+}
+
+.navbar-nav a:hover{
+    text-decoration: underline;
+}
+.edit-btn{
+    background-color:#677583!important;
+    border: none !important;
+}
+
+
+/* show page */
+.show-img{
+    height: 50vh;
+}
+.btns{
+    display: flex;
+}
+.show-card{
+    display: flex;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Edit page */
+
+
+/* Footer
+footer {
+    background: #677583;
+    color: white;
+    padding: 2rem 2%;
+    text-align: center;
+}
+.hello{
+    color: black;
+}
+
+.social-links {
+    margin-bottom: 1.5rem;
+}
+
+.social-links a {
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #3498db;
+}
+        
+.footer-bg {
+    position: relative;
+    overflow: hidden;
+}
+
+footer.sticky-footer {
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+.footer-contact{
+    margin-left: 50rem;
+} */

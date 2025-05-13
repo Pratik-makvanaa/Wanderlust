@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .footer-bg {
+            background: linear-gradient(to right, #2563eb, #4f46e5);
+            position: relative;
+            margin-top: 2rem;
+            padding-top: 2rem;
+        }
+        .wave {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: translateY(-99%);
+        }
+        .wave svg {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 20px;
+            fill: #93c5fd;
+        }
+        .social-links a {
+            color: #d1d5db;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #93c5fd;
+        }
+        .contact-info i {
+            color: #93c5fd;
+        }
+    </style>
+</head>
+<body>
+    <footer class="footer-bg text-white">
+        <!-- <div class="wave">
+            <svg preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
+        </div> -->
+        <div class="container py-5">
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-12 col-md-6 mb-4 mb-md-0">
+                    <h3 class="h4 fw-bold mb-3">Pratik Makvana</h3>
+                    <p class="text-gray-300">
+                        A passionate web developer focused on creating elegant, user-friendly solutions for complex problems.
+                    </p>
+                </div>
+                <!-- Contact Section -->
+                <div class="col-12 col-md-6 text-md-end">
+                    <h3 class="h4 fw-bold mb-3">Contact Me</h3>
+                    <div class="contact-info mb-3 text-gray-300">
+                        <p><i class="fas fa-envelope me-2"></i>pratikmakvana16@gmail.com</p>
+                        <p><i class="fas fa-phone me-2"></i>+91 7247637104</p>
+                        <p><i class="fas fa-map-marker-alt me-2"></i>Mandsaur, Madhya Pradesh</p>
+                    </div>
+                    <div class="social-links d-flex justify-content-md-end gap-3">
+                        <a href="https://www.linkedin.com/in/pratik-makvana/" target="_blank">
+                            <i class="fab fa-linkedin fa-lg"></i>
+                        </a>
+                        <a href="https://github.com/Pratik-makvanaa" target="_blank">
+                            <i class="fab fa-github fa-lg"></i>
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fab fa-twitter fa-lg"></i>
+                        </a>
+                        <a href="mailto:pratikmakvana16@gmail.com" target="_blank">
+                            <i class="fas fa-envelope fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-primary-subtle mt-4 pt-4 text-center">
+                <p class="text-gray-300">© 2025. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
